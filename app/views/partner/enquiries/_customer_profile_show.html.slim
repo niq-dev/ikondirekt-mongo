@@ -1,0 +1,7 @@
+h2 Customer Profile
+- profile = @reply.customer_profile
+- (profile.fields.keys -  ["_id","_type"]).each do |k|
+  br/
+  = k
+  = profile.send(k.to_sym)
+  br/

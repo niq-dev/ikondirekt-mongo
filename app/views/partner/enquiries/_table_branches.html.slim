@@ -1,0 +1,10 @@
+- @branches.each_with_index do |branch,index|
+  tr
+    td = index + 1
+    td = branch.full_address
+    td = branch.phone
+    td = branch.fax
+    td = branch.office_hours
+    td
+      = link_to staffs_to_assign_partner_enquiry_path(:branch_id => branch.id), :remote => true, :class => "tablectrl_small bBLue tipS", "original-title" => "select" do
+        span.iconb data-icon="&#xe20d;"

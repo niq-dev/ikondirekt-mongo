@@ -1,0 +1,22 @@
+p#notice= notice
+p
+  b Name:
+  = @staff.name
+p
+  b Gentler:
+  = @staff.gentler
+p
+  b Phone:
+  = @staff.phone
+p
+  b Fax:
+  = @staff.fax
+p
+  b Email:
+  = @staff.email
+p
+  b Office hours:
+  = @staff.office_hours
+= link_to 'Edit', edit_partner_staff_path(@staff)
+| \
+| \#{link_to 'Back', partner_staffs_path}

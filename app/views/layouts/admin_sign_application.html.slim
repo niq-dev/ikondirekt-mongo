@@ -1,0 +1,15 @@
+doctype
+html
+  head
+    title IkonMongo
+    = stylesheet_link_tag "themes/admin/styles", :media => "all"
+    = csrf_meta_tags
+    = render_widget "partner/js_library"
+  body
+    /! Top Line
+    = render_widget "partner/top_line"
+    /! Login wrapper begins
+    .loginWrapper
+      /! Current user form
+      = yield
+    /! Login wrapper ends

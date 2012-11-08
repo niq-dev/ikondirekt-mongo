@@ -1,0 +1,47 @@
+<%= form_for(@enquiry, :url => customer_enquiries_path) do |f| %>
+    <%= f.text_field :product_id %>
+    <div class="control-group">
+      <label><%= t :amount %></label>
+      <%= text_field :enquiry, :amount, :size => 30 %>
+    </div>
+
+    <% @enquiry.product.enquiry_fields.each do |field| %>
+        <%= f.label field.title %>
+        <% case field.type.to_sym %>
+        <% when :input %>
+            <%= f.text_field field.machine_name.to_sym %>
+        <% when :select %>
+            <%= f.select field.machine_name.to_sym, options_for_select(field.enum) %>
+        <% end %>
+    <% end %>
+
+    <h2><%= t :select_the_partners %></h2>
+
+    <div class="divider"></div>
+    <div class="control-group">
+      <% @enquiry.product.companies.each do |company| %>
+          <div class="select-img">
+            <%= check_box_tag "enquiry[chosen_partners][#{company.id}]", 1, true %>
+            <div class="img-box">
+              <%= image_tag(company.logo_url, :alt => company.name) %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <br/>
+    <p>&nbsp;</p>
+    <br/>
+    <p>&nbsp;</p><br/>
+    <p>&nbsp;</p>
+    <br/>
+    <h2><%= t :do_you_have_comment %></h2>
+    <div class="divider"></div>
+    <div class="control-group">
+      <%= text_area :enquiry, :comment, :rows => 5 %>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= f.submit (t :create), :class => "btn pull-right btn-success" %>
+    </div>
+<% end %>

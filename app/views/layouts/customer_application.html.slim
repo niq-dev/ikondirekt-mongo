@@ -1,0 +1,86 @@
+doctype
+html
+  head
+    title ikondirekt
+    = stylesheet_link_tag "themes/ikondirekt/styles", :media => "all"
+    = javascript_include_tag "app/ikondirekt/application"
+    = yield :stylesheet_include
+    = yield :scripts_include
+    = csrf_meta_tags
+  body
+    #header
+      .container
+        .row
+          .span2
+            a.brand href="#"
+              img alt="" src="img/logo.jpg"
+          .span8
+            h2.user-welcome
+              - if customer_signed_in?
+                p Angemeldet als #{current_customer.name}
+              - else
+                br
+            ul#nav-menu.nav.nav-pills
+              li.active
+                a href="#" Profil
+              li
+                a href="#" Unsere Partner
+              li
+                a href="#" Support Zone
+              li
+                a href="#" Kontakt
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href="#"
+                  = t :my_account
+                  b.caret
+                ul.dropdown-menu
+                  - unless customer_signed_in?
+                    li
+                      = link_to t(:sign_in), new_customer_session_path
+                  li
+                    = link_to t(:new_enquiry), pre_new_enquiries_path
+                  - if customer_signed_in?
+                    li
+                      = link_to t(:my_enquiry), enquiries_path
+                    li
+                      = link_to t(:my_account), edit_account_profile_path(current_customer)
+                    li
+                      = link_to t(:sign_out), destroy_customer_session_path, :method => :delete
+          .span2
+    /! === end header content ===
+    #page
+      .container
+        .row
+          .span2.sidebar.sidebar-first
+            = render_cell "ikondirekt/sidebar_first", :display
+
+          .span8.main-content
+            .inner
+              - unless flash[:notice].blank?
+                .alert.alert-block
+                  - if flash[:notice].kind_of?(Array)
+                    - flash[:notice].each do |notice|
+                      = notice
+                      br
+                  - else
+                    = flash[:notice]
+              = yield
+          .span2.sidebar.sidebar-second
+            .inner
+              = image_tag "themes/ikondirekt/ad-right.jpg"
+    /! === end page content ===
+    #footer
+      .container
+        ul.footer-links.unstyled
+          li
+            a href="#" Usere AGB
+          li.lines |
+          li
+            a href="#" Datenschutzenerklärung
+          li.lines |
+          li
+            a href="#" Impressum
+          li.lines |
+          li &copy; 2012, ikondirekt
+    /! === end footer content ====
+    = yield :scripts

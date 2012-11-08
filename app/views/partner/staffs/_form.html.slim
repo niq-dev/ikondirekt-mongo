@@ -1,0 +1,38 @@
+= admin_content_form_for @staff, :url => @staff.new_record? ? partner_staffs_path : partner_staff_path(@staff), :wrapper => :admin_content  do |f|
+  fieldset
+    .widget.fluid
+      .whead
+        h6= t :edit_staff
+        .clear
+      - if @staff.errors.any?
+        #error_explanation
+          h2
+            = pluralize(@staff.errors.count, "error")
+            | prohibited this staff from being saved:
+          ul
+            - @staff.errors.full_messages.each do |msg|
+              li= msg
+      = f.input :first_name
+      = f.input :last_name
+      = f.label :gentler
+      br/
+      = f.label :male
+      = f.radio_button :gentler, :male
+      br/
+      = f.label :famale
+      = f.radio_button :gentler, :female
+      = f.input :email, :as => :string
+      = f.input :password
+      = f.input :title
+      = f.input :phone, :as => :string
+      = f.input :fax
+      = f.input :office_hours
+      = f.label :branch_id
+      br/
+      = f.collection_select :branch_id, current_staff.company.branches, :id, :name
+      br/
+      br/
+      .actions
+        = f.button :submit
+      = link_to 'Back', partner_staffs_path
+    .clear

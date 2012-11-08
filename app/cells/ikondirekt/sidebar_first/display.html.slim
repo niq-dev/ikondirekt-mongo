@@ -1,0 +1,22 @@
+.well
+  p = t :username
+  input type="text"
+  p = t :password
+  input type="password"
+  button type="submit" = t :sign_in
+
+
+.sidewell
+  span = t :new_enquiry
+  - ProductCategory.roots.each do |category_root|
+    h5 = category_root.name
+    - if category_root.children.present?
+      ul.nav
+        - category_root.children.each do |category|
+          li = category.name
+          - if category.products.present?
+            ul
+              - category.products.each do |product|
+                li
+                  /= product.name
+                  = link_to product.name, new_enquiry_path(:product => product.id)

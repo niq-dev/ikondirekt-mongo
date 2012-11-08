@@ -1,0 +1,26 @@
+.well-content
+  %h3
+    = t :create_date
+    \: #{@enquiry.created_at.to_s(:short)}
+  = render :partial => 'root_show'
+  %h3 Selected Partners
+  %table.table.table-striped.pull-left
+    %thead
+      %tr
+        %th Bank Name
+        - @enquiry.product.reply_fields.each do |tmplt|
+          %th= tmplt.title
+        %th State
+        %th
+    %tbody
+      - @enquiry.replies.each do |r|
+        %tr
+          %td= r.company.name
+          - @enquiry.product.reply_fields.each do |v|
+            %td= r[v.machine_name.to_sym]
+          %td= r.state_name_for_customer
+          %td
+            = link_to t(:details), reply_details_customer_enquiry_path(:reply_id => r.id)
+  = link_to t(:back), customer_enquiries_path
+- content_for :page_title do
+  = t :enquiry_details

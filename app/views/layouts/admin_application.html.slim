@@ -1,0 +1,36 @@
+doctype
+html
+  head
+    title Ikondirekt Admin
+    = stylesheet_link_tag "themes/admin/styles", :media => "all"
+    = render_widget "partner/js_library"
+    = yield :stylesheet_include
+    = yield :scripts_include
+    = csrf_meta_tags
+  body
+    /! Top Line
+    = render_widget "partner/top_line"
+    /! Sidebar
+    #sidebar
+      = render_widget "partner/main_nav"
+      = yield :sec_nav
+    /! Content begins
+    #content
+      /! Content Top
+      .contentTop
+        span.pageTitle
+          span.icon-screen
+          = @page_title
+        .clear
+      /! Breadcrumbs line
+      .breadLine
+        .bc
+          = render_crumbs :format => :html_list, :ul_id => "breadcrumbs", :ul_class => "breadcrumbs", :active_li_class => "current"
+      /! Main Content
+      .wrapper
+        - unless flash[:notice].blank?
+          .nNote.nWarning
+            p = flash[:notice]
+        = yield
+    /! Content ends
+    = yield :scripts

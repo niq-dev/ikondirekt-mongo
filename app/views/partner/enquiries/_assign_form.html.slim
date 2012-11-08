@@ -1,0 +1,31 @@
+h3 Please select an advisor
+br/
+table
+  th
+    td
+      = t :name
+    td
+      = t :gentler
+    td
+      = t :title
+    td
+      = t :fax
+    td
+      = t :phone
+    td
+      = t :action
+  - #@branch.staffs.where(:role_id => Role.find_by(:name=>"advisor").id ).each do |a|
+    - @branch.staffs.each do |a|
+      tr
+        td
+          = a.name
+        td
+          = a.gentler
+        td
+          = a.title
+        td
+          = a.fax
+        td
+          = a.phone
+        td
+          = link_to "assign", submit_assign_partner_replies_path(:advisor_id => a.id,:id => @reply.id)

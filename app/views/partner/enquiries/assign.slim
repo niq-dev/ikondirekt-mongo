@@ -1,0 +1,83 @@
+- content_for :stylesheet_include do
+  = stylesheet_link_tag 'gmaps4rails'
+
+- content_for :scripts_include do
+  = javascript_include_tag "app/partner/location_chained_select"
+
+.widget
+  .whead
+    h6 = t :map
+    .clear
+  = gmaps( :map_options => {:container_class => "gmap_container",:class => "gmap", :detect_location => true, :auto_zoom => true }, \
+           "circles" => { "data" => @enquiry_circle })
+
+.fluid
+  .grid6
+    .widget.staticGroup
+      = render "customer_info"
+
+      = render "enquiry_details"
+
+      = render "enquiry_comment"
+
+      = render "enquiry_location"
+
+  .grid6
+    .widget.staticGroup
+      .whead
+        h6 = t :location_filter
+        a href="#" class="buttonH bBlue"
+          = t :smart_assign
+        div class="clear"
+      = form_tag branches_to_assign_partner_enquiry_path, :method => "get", :remote => true do
+        .formRow
+          div class="grid3"
+            label State:
+          div class="grid9 searchDrop"
+            =select_tag :state_code, options_for_select(@states_list, params[:state_code]), :include_blank => true, :class => "select", :style => "width:350px;", "data-placeholder" => "Choose a State..."
+          div class="clear"
+
+        div class="formRow"
+          div class="grid3"
+            label Region:
+          div class="grid9 searchDrop"
+            = select_tag(:region_code, options_for_select([]), :include_blank => true, :class => "select", :style => "width:350px;", "data-placeholder" => "Choose a Region...")
+          div class="clear"
+
+        div class="formRow"
+          div class="grid3"
+            label Place:
+          div class="grid9 searchDrop"
+            = select_tag("place_codes", options_for_select([]), :include_blank => true, :class => "fullwidth select", :multiple => true, "data-placeholder" => "Choose a place...")
+          div class="clear"
+
+        div class="formRow"
+          = submit_tag "Search", :class => "buttonS bLightBlue"
+
+      .whead
+        h6 = t :branches_filter
+        .clear
+      table#branches-table.tDefault cellpadding="0" cellspacing="0" width="100%"
+        thead
+          tr
+            td #
+            td = t :address
+            td = t :phone
+            td = t :fax
+            td = t :office_hours
+            td = t :action
+        tbody
+
+      .whead
+        h6 = t :staffs_filter
+        .clear
+      table#staffs-table.tDefault cellpadding="0" cellspacing="0" width="100%"
+        thead
+          tr
+            td #
+            td = t :name
+            td = t :email
+            td = t :phone
+            td = t :fax
+            td = t :action
+        tbody

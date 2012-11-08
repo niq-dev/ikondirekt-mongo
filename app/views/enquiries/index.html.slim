@@ -1,0 +1,20 @@
+h2.page-title Anfragelisten.
+.content
+  table.table.table-anfrage-liste
+    thead
+      tr
+        th Datum
+        th Produkt
+        th Status
+        th Operation
+    tbody
+      - @enquiries.each do |enquiry|
+        tr
+          td = enquiry.created_at.to_formatted_s(:short)
+          td = enquiry.product.name
+          td = enquiry.status
+          td
+            = link_to enquiry do
+              i.icon-search
+            = link_to enquiry, :method => "delete", 'data-confirm' => "Are you Sure?" do
+              i.icon-remove

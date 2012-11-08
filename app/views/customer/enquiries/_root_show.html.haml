@@ -1,0 +1,34 @@
+%table.table.table-striped.pull-left
+  %tbody
+    - @enquiry.product.enquiry_fields.each do |field|
+      %tr
+        %td
+          = field.machine_name
+          \:
+        %td= h @enquiry[ field.machine_name.to_sym]
+    %tr
+      %td
+        = t :amount
+        \:
+      %td= @enquiry.amount
+    - if @enquiry.income_info && @enquiry.income_info.visible?
+      %tr
+        %td
+          = t :visible_online
+          \:
+        %td= @enquiry.income_info.visible_online
+      %tr
+        %td
+          = t :employee
+          \:
+        %td= @enquiry.income_info.employee
+      %tr
+        %td
+          = t :salary_per_month
+          \:
+        %td= @enquiry.income_info.salary_per_month
+      %tr
+        %td
+          = t :av_expense_per_month
+          \:
+        %td= @enquiry.income_info.av_expense_per_month

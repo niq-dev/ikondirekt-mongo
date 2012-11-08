@@ -1,0 +1,15 @@
+.whead
+  h6= t :anser_enquiry
+  .clear
+= admin_content_form_for @reply, :url => (save_answer_partner_enquiry_path(@reply)), :wrapper => :admin_content do |f|
+  - @enquiry.product.reply_fields.each do |field|
+    = f.input field.machine_name.to_sym
+  = f.input :meeting, :as => :text, :input_html => {:rows => 5}
+
+  .formRow.noBorderB
+    #status1.status
+    .formSubmit
+      = link_to 'Back', partner_enquiries_path, :class => "buttonM bDefault ui-wizard-content ui-formwizard-button"
+      = f.button :submit, :class => "buttonM bRed ml10 ui-wizard-content ui-formwizard-button"
+      .clear
+    .clear

@@ -1,0 +1,37 @@
+<h1>Fill in enquiry form of <%= @enquiry.product.name %></h1>
+<%= form_tag(customer_enquiry_path(@enquiry),:method =>:put) do  %>
+    <%= hidden_field_tag :id, @enquiry.id %>
+    <% for @form_field_value in  @enquiry.form_field_values %>
+        <div class="field">
+          <label><%= @form_field_value.form_field_template.name %></label>  <br/>
+          <%=  input_display(@form_field_value) %>
+        </div>
+
+    <% end %>
+    <div class="field">
+      <label>Amount:</label>  <br/>
+      <%= text_field :enquiry,:amount,:size => 30 %>
+    </div>
+    <br/>
+    <h3>Institutions chosen, as which will be sent your request:</h3>
+    <ul>
+        <% @enquiry.replies.each do |r| %>
+              <li><%=h r.partner.name %></li>
+        <% end %>
+    </ul>
+<h2>Please going on to select the institutions:</h2>
+    <%= hidden_field_tag 'id', @enquiry.id %>
+    <table>
+      <tr>
+        <th >INSTITUTION CHOOSE</th>
+      </tr>
+      <% @partners.each do |partner| %>
+          <tr>
+            <td><%= check_box_tag "choices[#{partner.id}]" %></td>
+            <td><%=h partner.name %></td>
+          </tr>
+      <% end %>
+    </table>
+    </br>
+    <%= submit_tag "Save" %>
+<% end %>

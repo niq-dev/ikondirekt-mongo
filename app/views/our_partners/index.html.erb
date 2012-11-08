@@ -1,0 +1,21 @@
+<h1>Listing our_partners</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @our_partners.each do |our_partner| %>
+  <tr>
+    <td><%= link_to 'Show', our_partner %></td>
+    <td><%= link_to 'Edit', edit_our_partner_path(our_partner) %></td>
+    <td><%= link_to 'Destroy', our_partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Our partner', new_our_partner_path %>

@@ -1,0 +1,43 @@
+.widget
+  .whead
+    h6= t :staffs
+    .clear
+  .shownpars
+    table.dTable cellpadding="0" cellspacing="0" data-source="#{partner_staffs_path(format: :json)}" width="100%"
+      thead
+        tr
+          td.sortCol
+            div
+              = t :name
+              span
+          td.sortCol
+            div
+              = t :phone
+              span
+          td.sortCol
+            div
+              = t :fax
+              span
+          td.sortCol
+            div
+              = t :email
+              span
+          td.sortCol
+            div
+              = t :state
+              span
+          td.sortCol
+            div
+              = t :place
+              span
+          td.sortCol
+            div
+              = t :postal_code
+              span
+          td.sortCol
+            div
+              = t :action
+              span
+      tbody
+- content_for :page_title do
+  = t :list_of_staffs

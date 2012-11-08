@@ -1,0 +1,274 @@
+@import "bootstrap";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+}
+
+/*========================================*\
+*
+* Header
+*
+\*========================================*/
+#header .container {
+  border-bottom: 1px dashed #82919b;
+  margin-bottom: 20px;
+}
+
+#header .brand {
+  display: block;
+  width: 170px;
+  height: 83px;
+  margin-bottom: 1px;
+}
+
+/*81929a*/
+.user-welcome {
+  color: #81929a;
+  font-size: 11px;
+  line-height: 26px;
+}
+
+/*nav-menu*/
+#nav-menu {
+  margin-bottom: -1px;
+  border-bottom: 1px solid #82919b;
+
+  li a {
+    border-radius: 0;
+    color: #000;
+    font-size: 14px;
+    padding: 20px 8px 3px;
+    margin-bottom: 1px;
+    font-weight: bold;
+  }
+}
+
+#nav-menu >.active >a,
+#nav-menu >li > a:hover {
+  background: #82919b;
+
+  color: #fff;
+}
+
+#nav-menu .open .dropdown-toggle,
+#nav-menu > li.dropdown.open.active > a:hover {
+  color: white;
+  background-color: #82919b;
+  border-color: #82919b;
+  margin-bottom: -2px;
+}
+
+#nav-menu .dropdown-toggle .caret {
+  border-top-color: #82919b;
+  border-bottom-color: #82919b;
+}
+
+#nav-menu .open .dropdown-toggle .caret,
+#nav-menu > li.dropdown.open.active > a:hover .caret,
+#nav-menu .dropdown-toggle:hover .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+#nav-menu .dropdown-menu {
+  border-radius: 0;
+  border: none;
+  border-top: 3px solid #82919b;
+  padding: 20px 12px;
+}
+
+#nav-menu .dropdown-menu a {
+  height: 30px;
+  line-height: 30px;
+  margin-left: 5px;
+  padding: 5px 0;
+}
+
+#nav-menu .dropdown-menu a:hover {
+  font-size: 14px;
+  font-weight: bold;
+  color: #41464b;
+  background: #fac300;
+}
+
+.sidebar-first,
+.main-content {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-top: 1px solid #82919b;
+  padding-top: 15px;
+  min-height: 623px;
+  height: auto !important;
+  height: 623px;
+}
+
+/*sidebar*/
+.sidebar h3 {
+  font-size: 13px;
+  color: #82919b;
+  font-weight: bold;
+  line-height: 1.625;
+  margin: 0 5px 20px;
+}
+
+.sidebar .nav-list {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav-list a {
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 14px;
+  color: #000;
+  padding-left: 25px;
+}
+
+.sidebar .nav-list .active a,
+.sidebar .nav-list a:hover {
+  background: #82919B url("img/arrow.png") no-repeat 5px center;
+  color: #fff;
+}
+
+/*footer*/
+#footer {
+  padding-top: 65px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.footer-links {
+  font-size: 0;
+  letter-spacing: -4px;
+  word-spacing: -4px;
+}
+
+.footer-links li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  color: #81929a;
+  font-size: 12px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  word-break: break-all;
+  margin: 0 3px;
+}
+
+.footer-links a {
+  color: #81929a;
+}
+
+/*home page*/
+
+/*page-title*/
+.page-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #82919b;
+  line-height: 1.25;
+  padding: 0 15px;
+  margin-top: 0;
+}
+
+/*branner*/
+.branner {
+  margin-bottom: 20px;
+}
+
+/*content*/
+.main-content .content {
+  padding: 0 15px;
+}
+
+.content dt {
+  font-size: 14px;
+  font-weight: bold;
+  color: #82919b;
+}
+
+.content dd {
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+/*anfrage-liste*/
+.anfrage-liste .page-title {
+  margin-bottom: 20px;
+}
+
+.table-anfrage-liste thead {
+  border: 2px solid #fac300;
+  border-bottom: none;
+  border-top: none;
+}
+
+.table-anfrage-liste th {
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  background: #fac300;
+}
+
+.table-anfrage-liste tbody {
+  border: 2px solid #82919b;
+}
+
+.table-anfrage-liste td {
+  border-top: 1px dashed #fac300;
+  font-size: 14px;
+  color: #000;
+}
+
+.table-anfrage-liste a {
+  color: #fac300;
+}
+
+/*neue-anfrage-form*/
+.neueanfrage .page-title {
+  margin-bottom: 20px;
+}
+
+.neue-anfrage-form fieldset {
+  border-bottom: 1px dashed #b9cd00;
+  padding: 0 15px;
+  margin-bottom: 10px;
+}
+
+.neue-anfrage-form label {
+  font-size: 14px;
+}
+
+.neue-anfrage-form h3 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 20px 0 10px 0;
+}
+
+.neue-anfrage-form input[type="text"] {
+  height: auto;
+  width: 220px;
+}
+
+.neue-anfrage-form .form-textarea {
+  width: 85%;
+  height: 100px;
+}
+
+.neue-anfrage-form .form-actions {
+  padding: 10px 220px;
+  background: none;
+  border: none;
+  float: right;
+}
+
+.neue-anfrage-form .checkbox .form-checkbox {
+  float: none;
+}
+
+table {
+  font-size: 12px;
+}

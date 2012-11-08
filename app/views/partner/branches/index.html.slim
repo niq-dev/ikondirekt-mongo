@@ -1,0 +1,42 @@
+.widget
+  .whead
+    h6= t :branches
+    .titleOpt
+      a data-toggle="dropdown" href="#"
+        span.icos-cog3
+        span.clear
+      ul.dropdown-menu.pull-right
+        li
+          = link_to new_partner_branch_path do
+            span.icos-add
+            = t :add
+    .clear
+  .shownpars
+    table.dTable cellpadding="0" cellspacing="0" data-source="#{partner_branches_path(format: :json)}" width="100%"
+      thead
+        tr
+          td= t :state
+          td= t :place
+          td= t :postal_code
+          td= t :phone
+          td= t :fax
+          td= t :office_hours
+          td= t :action
+      tbody
+
+- content_for :page_title do
+  = t :list_of_branches
+
+- content_for :sec_nav do
+  = render_widget "partner/sec_nav"
+
+- if params[:place_codes].present?
+  = params[:place_codes]
+  - @branches = @branches.in_places(params[:place_codes])
+  = @branches.to_s
+
+
+/= link_to partner_branch_path(branch), :class => "tablectrl_small bDefault tipS", "original-title" => "Show" do
+/  <span class="iconb" data-icon="&amp;#xe271;"></span>
+/= link_to edit_partner_branch_path(branch), :class => "tablectrl_small bDefault tipS", "original-title" => "Edit" do
+/  <span class="iconb" data-icon="&amp;#xe003;"></span>

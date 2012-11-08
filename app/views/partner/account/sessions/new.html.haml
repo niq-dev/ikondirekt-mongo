@@ -1,0 +1,19 @@
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  .form-inputs
+- #f.input :email, :required => false, :class => "loginEmail", :autofocus => true
+  = f.text_field :email, :required => false, :class => "loginEmail", :autofocus => true
+  = f.password_field :password, :required => false , :class => "loginPassword"
+- #f.input :password, :required => false , :class => "loginPassword"
+  .logControl
+    .memory
+      = f.check_box :remember_me, :class => "check", :as => :boolean if devise_mapping.rememberable?
+      = f.label :remember_me, :class=>"remember1"
+    = f.submit t(:sign_in), :class => "buttonM bBlue"
+/ <form action="index.html" id="recover">
+/ <input type="text" name="login" placeholder="Your username" class="loginUsername" />
+/ <input type="password" name="password" placeholder="Password" class="loginPassword" />
+/ <div class="logControl">
+/ <div class="memory"><input type="checkbox" checked="checked" class="check" id="remember2" /><label for="remember2">Remember me</label></div>
+/ <input type="submit" name="submit" value="Login" class="buttonM bBlue" />
+/ </div>
+/ </form>

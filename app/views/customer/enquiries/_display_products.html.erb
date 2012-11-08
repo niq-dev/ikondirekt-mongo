@@ -1,0 +1,7 @@
+<div>
+    <% cat.products.each do |p| %>
+        <div>
+          <%= link_to p.name, new_customer_enquiry_path(:product_id => p.id) %>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,28 @@
+h1
+  | Fill in enquiry form of #{@enquiry.product.name}
+= form_tag(customer_enquiry_path(@enquiry),:method =>:put) do
+  = hidden_field_tag :id, @enquiry.id
+  - for @form_field_value in  @enquiry.form_field_values
+    .field
+      label= @form_field_value.form_field_template.name
+      br/
+      = input_display(@form_field_value)
+  .field
+    label Amount:
+    br/
+    = text_field :enquiry,:amount,:size => 30
+  br/
+  h3 Institutions chosen, as which will be sent your request:
+  ul
+    - @enquiry.replies.each do |r|
+      li= h r.partner.name
+  h2 Please going on to select the institutions:
+  = hidden_field_tag 'id', @enquiry.id
+  table
+    tr
+      th INSTITUTION CHOOSE
+    - @partners.each do |partner|
+      tr
+        td= check_box_tag "choices[# partner.id
+        td= h partner.name
+  = submit_tag "Save"

@@ -1,0 +1,35 @@
+<!-- MainNav begins -->
+
+<div class="mainNav">
+  <div class="user">
+    <a title="" class="leftUserDrop">
+      <%= image_tag(current_staff.avatar_url(:thumb), :alt => current_staff.name) %>
+      <span><strong>3</strong></span>
+    </a>
+    <span><%= current_staff.name %></span>
+    <%= render_navigation(:context => :partner_main_user) %>
+  </div>
+
+  <!-- Responsive nav -->
+  <div class="altNav">
+    <div class="userSearch">
+      <form action="">
+        <input type="text" placeholder="search..." name="userSearch"/>
+        <input type="submit" value=""/>
+      </form>
+    </div>
+
+    <!-- User nav -->
+    <ul class="userNav">
+      <li><a href="#" title="" class="profile"></a></li>
+      <li><a href="#" title="" class="messages"></a></li>
+      <li><a href="#" title="" class="settings"></a></li>
+      <li><a href="#" title="" class="logout"></a></li>
+    </ul>
+  </div>
+
+  <!-- Main nav -->
+  <%= render_navigation(:context => :partner_main) %>
+
+</div>
+<!-- MainNav ends -->

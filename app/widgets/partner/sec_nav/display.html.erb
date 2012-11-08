@@ -1,0 +1,27 @@
+<%= content_for :scripts_include do %>
+    <%= javascript_include_tag "app/partner/branches.js" %>
+<% end %>
+
+<div class="secNav">
+  <div class="secWrapper">
+    <div class="secTop">
+    </div>
+
+    <!-- Tabs container -->
+    <ul class="iconsLine">
+      <li></li>
+    </ul>
+    <div id="general">
+
+      <!-- Sidebar forms -->
+      <div class="sideWidget">
+        <%= render_widget "partner/location_filter" %>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+</script>

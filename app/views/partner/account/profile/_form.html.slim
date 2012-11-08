@@ -1,0 +1,43 @@
+.fluid
+  .widget.grid6
+    .whead
+      h6= t :my_photo
+      .clear
+    .body
+      .wAvatarUpload.fluid
+        .imgBox
+          = image_tag(current_staff.avatar_url(:medium), :alt => current_staff.name)
+        /.uploadBox
+        /  input#fileInputS.fileInput type="file"
+        /  p Maximal size of uploaded photo should be smaller than 1 MB
+        /  br
+        /  .clear
+        /  a.buttonM.bDefault href="#"
+        /    span.icos-cross
+        /    span Delete
+        /  a.buttonM.bGreyish href="#"
+        /    span.icon-upload-4
+        /    span Start Upload
+
+  .widget.grid6
+    .whead
+      h6= t :my_profile
+      .clear
+    table.tDefault cellpadding="0" cellspacing="0" width="100%"
+      tbody
+        tr
+          td = t :name
+          td = t @profile.name
+        tr
+          td = t :phone
+          td = t @profile.phone
+        tr
+          td = t :fax
+          td = t @profile.fax
+        tr
+          td = t :email
+          td = t @profile.email
+      tfoot
+        tr
+          td
+            .itemActions = link_to 'Back', partner_branches_path, :class => "buttonM bDefault ui-wizard-content ui-formwizard-button"

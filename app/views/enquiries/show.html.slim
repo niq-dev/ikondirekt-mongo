@@ -1,0 +1,57 @@
+h3
+  = t :create_date
+  | -
+  = @enquiry.created_at.to_s(:short)
+table.table.table-striped.pull-left
+  tbody
+    - @enquiry.product.enquiry_fields.each do |field|
+      tr
+        td = field.title
+        td = @enquiry[ field.machine_name.to_sym]
+    tr
+      td = t :amount
+      td = @enquiry.amount
+    - if @enquiry.income_info && @enquiry.income_info.visible?
+      tr
+        td = t :visible_online
+        td = @enquiry.income_info.visible_online
+      tr
+        td = t :employee
+        td = @enquiry.income_info.employee
+      tr
+        td = t :salary_per_month
+        td = @enquiry.income_info.salary_per_month
+      tr
+        td = t :av_expense_per_month
+        td = @enquiry.income_info.av_expense_per_month
+
+h3 Selected Partners
+table.table.table-striped.pull-left
+  thead
+    tr
+      th Bank Name
+      - @enquiry.product.reply_fields.each do |tmplt|
+        th= tmplt.title
+      th State
+      th
+  tbody
+    - @enquiry.replies.each do |r|
+      tr
+        td= r.company.name
+        - @enquiry.product.reply_fields.each do |v|
+          td= r[v.machine_name.to_sym]
+        td = r.state_name_for_customer
+        td = link_to t(:details), reply_details_enquiry_path(:reply_id => r.id), :remote => true,'data-toggle' => 'modal', "data-target"=>"#reply-window"
+
+
+= link_to t(:back), customer_enquiries_path
+
+#reply-window.modal.hide.fade role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-header
+    button.close type="button" data-dismiss="modal" aria-hidden="true" ×
+    h3 Loading...
+  .modal-body
+    p One fine body…
+
+- content_for :page_title do
+  = t :enquiry_details

@@ -1,0 +1,16 @@
+table.table.table-striped.pull-left
+  thead
+    tr
+      th= t(:date_t)
+      th= t(:product)
+      th= t(:state)
+      th= t(:action)
+  tbody
+    - @enquiries.each do |enquiry|
+      tr
+        td= enquiry.created_at.to_s(:short)
+        td= enquiry.product.name if enquiry.product
+        td= enquiry.state_name
+        td= link_to t(:details), customer_enquiry_path(enquiry)
+- content_for :page_title do
+  = t :list_of_enquiries

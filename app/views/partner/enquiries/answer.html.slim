@@ -1,0 +1,31 @@
+= stylesheet_link_tag 'gmaps4rails'
+
+.fluid
+  .grid6
+    .widget.staticGroup
+      = render "enquiry_map"
+
+      = render "enquiry_details"
+
+      = render "enquiry_comment"
+
+      = render "enquiry_location"
+
+  .grid6
+    .widget
+      = render "reply_form"
+
+/h1 Replying
+/= render :partial => '/customer/enquiries/root_show'
+/h2 Please fill in the form below
+/= form_for(@reply, :url => save_answer_partner_reply_path)  do |f|
+/  - @enquiry.product.reply_fields.each do |field|
+/    = f.label field.machine_name
+/    - case field.type.to_sym
+/    - when :input
+/      = f.text_field field.machine_name.to_sym
+/    - when :select
+/      = f.select field.machine_name.to_sym, options_for_select(field.enum)
+/    br
+/  = f.submit  'Save'
+/  | |    #{link_to "Back", partner_replies_path}

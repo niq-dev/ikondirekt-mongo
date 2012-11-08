@@ -1,0 +1,5 @@
+.whead
+  h6 = t :map
+  .clear
+= gmaps( :map_options => {:container_class => "gmap_container",:class => "gmap", :detect_location => true, :auto_zoom => true }, \
+          "circles" => { "data" => @enquiry_circle, "options" => {"radius"=>1000} } )

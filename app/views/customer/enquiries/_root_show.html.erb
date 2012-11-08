@@ -1,0 +1,33 @@
+<table class="table table-striped pull-left">
+  <tbody>
+  <% @enquiry.product.enquiry_fields.each do |field| %>
+      <tr>
+        <td><%= field.machine_name %>:</td>
+        <td><%= h @enquiry[ field.machine_name.to_sym] %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <td><%= t :amount %>:</td>
+    <td><%= @enquiry.amount %></td>
+  </tr>
+  <% if @enquiry.income_info && @enquiry.income_info.visible? %>
+      <tr>
+        <td><%= t :visible_online %>:</td>
+        <td><%= @enquiry.income_info.visible_online %></td>
+      </tr>
+      <tr>
+        <td><%= t :employee %>:</td>
+        <td><%= @enquiry.income_info.employee %></td>
+      </tr>
+      <tr>
+        <td><%= t :salary_per_month %>:</td>
+        <td><%= @enquiry.income_info.salary_per_month %></td>
+      </tr>
+      <tr>
+        <td><%= t :av_expense_per_month %>:</td>
+        <td><%= @enquiry.income_info.av_expense_per_month %></td>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>

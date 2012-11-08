@@ -1,0 +1,7 @@
+= render :partial => "/partner/replies/root_show"
+= link_to t(:back), customer_enquiry_path(@enquiry), :class => "btn pull-left"
+- if  @reply.answered?
+  = link_to t(:deny), reject_answer_customer_enquiry_path(:id => @enquiry, :reply_id =>@reply), :class => "btn btn-danger pull-right"
+  = link_to t(:select), choose_answer_customer_enquiry_path(:id => @enquiry, :reply_id => @reply), :class => "btn btn-success pull-right"
+- content_for :page_title do
+  = t :reply_details

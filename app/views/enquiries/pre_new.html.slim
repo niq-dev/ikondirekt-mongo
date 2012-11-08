@@ -1,0 +1,44 @@
+h2.page-title Neue Anfrage - Schritt 1.
+=form_tag "new", :method => "get", :class => "neue-anfrage-form form-horizontal", :validate => true do
+  fieldset
+    h3 Bitte wählen Sie Ihre Orte aus
+    .control-group
+      label.control-label for="" = t :state
+      .controls
+        =select_tag :state_code, options_for_select(@states_list, params[:state_code]), :include_blank => true, :validate => { :presence => true }
+
+    .control-group
+      label.control-label for="" = t :region
+      .controls
+        = select_tag :region_code, options_for_select(@regions_list, params[:region_code]), :include_blank => true,:validate => { :presence => true }
+
+    .control-group
+      label.control-label for="" = t :place
+      .controls
+        = select_tag :place_code, options_for_select(@places_list, params[:place_codes]), :include_blank => true, :validate => { :presence => true }
+
+  fieldset
+    h3 Bitte wählen Sie Ihre Product aus
+    .control-group
+      label.control-label for="" = t :category
+      .controls
+        = select_tag :root_category, options_for_select(@categories_root_list), :include_blank => true
+
+    .control-group
+      label.control-label for="" = t :subcategory
+      .controls
+        = select_tag :sub_category, options_for_select([]), :include_blank => true
+
+    .control-group
+      label.control-label for="" = t :product
+      .controls
+        = select_tag :product, options_for_select([]), :include_blank => true
+
+  .form-actions
+    = submit_tag :next, :class => "btn"
+
+
+- content_for :scripts_include do
+  = javascript_include_tag "contrib/plugins/ui/jquery.chained.remote"
+  = javascript_include_tag "app/ikondirekt/location_chained_select"
+  = javascript_include_tag "app/ikondirekt/product_chained_select"

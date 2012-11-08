@@ -1,0 +1,44 @@
+.widget
+  .whead
+    h6= t :replies
+    .clear
+  .shownpars
+    /table class="dTable" cellpadding="0" cellspacing="0" data-source="{partner_enquiries_path(format: :json)}" width="100%"
+    table.dTable cellpadding="0" cellspacing="0" data-source="#{partner_enquiries_path(format: :json)}" width="100%"
+      thead
+        tr
+          td.sortCol
+            div
+              = t :created_at
+              span
+          td.sortCol
+            div
+              = t :product
+              span
+          td.sortCol
+            div
+              = t :status
+              span
+          td.sortCol
+            div
+              = t :state
+              span
+          td.sortCol
+            div
+              = t :postal_code
+              span
+          td.sortCol
+            div
+              = t :place
+              span
+          td.sortCol
+            div
+              = t :action
+              span
+      tbody
+- content_for :page_title do
+  = t :list_of_replies
+
+
+- content_for :sec_nav do
+  = render "sidebar_index"

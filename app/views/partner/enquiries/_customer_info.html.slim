@@ -1,0 +1,29 @@
+.whead
+  h6 = t :customer_info
+  .clear
+
+- if @reply.choiced?
+  table.tDefault cellpadding="0" cellspacing="0" width="100%"
+    tbody
+      tr
+        td = t :first_name
+        td = @reply.customer_profile.first_name
+      tr
+        td = t :last_name
+        td = @reply.customer_profile.last_name
+      tr
+        td = t :email
+        td = @reply.customer_profile.email
+      tr
+        td = t :mobile
+        td = @reply.customer_profile.mobile
+
+- elsif @reply.rejected?
+  .body
+    .nNote.nWarning style="margin-top:0px"
+      p You can see the Customer Information, only when the customer accept your Enquiry Offer.
+
+- else
+  .body
+    .nNote.nWarning style="margin-top:0px"
+      p You can see the Customer Information, only when the customer accept your Enquiry Offer.

@@ -1,0 +1,24 @@
+= admin_content_form_for @branch, :url => (@branch.new_record? ? partner_branches_path : partner_branch_path(@branch)), :wrapper => :admin_content do |f|
+  fieldset
+    .widget.fluid.grid6
+      .whead
+        h6= t :edit_branch
+        .clear
+      = f.input :name
+      = f.input :address_street, :as => :string, :label => 'Address'
+      = f.input :address_phone, :as => :string, :label => 'Phone'
+      = f.input :address_fax, :as => :string, :label => 'Fax'
+      = f.input :email, :as => :string
+      = f.input :office_hours
+      .formRow.noBorderB
+        #status1.status
+        .formSubmit
+          = link_to 'Back', partner_branches_path, :class => "buttonM bDefault ui-wizard-content ui-formwizard-button"
+          = f.button :submit, :class => "buttonM bRed ml10 ui-wizard-content ui-formwizard-button"
+          .clear
+        .clear
+    .widget.grid6
+      .whead
+        h6= t :map
+        .clear
+      = gmaps4rails(@map_marker)

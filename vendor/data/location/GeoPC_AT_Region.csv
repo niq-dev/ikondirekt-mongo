@@ -1,0 +1,100 @@
+State_id,Region_id,Region,State_id,Region_id
+1,101,Eisenstadt,1,101
+1,103,Eisenstadt-Umgebung,1,103
+1,104,Güssing,1,104
+1,105,Jennersdorf,1,105
+1,106,Mattersburg,1,106
+1,107,Neusiedl am See,1,107
+1,108,Oberpullendorf,1,108
+1,109,Oberwart,1,109
+1,102,Rust,1,102
+2,210,Feldkirchen,2,210
+2,203,Hermagor,2,203
+2,201,Klagenfurt,2,201
+2,204,Klagenfurt-Land,2,204
+2,205,Sankt Veit an der Glan,2,205
+2,206,Spittal an der Drau,2,206
+2,202,Villach,2,202
+2,207,Villach-Land,2,207
+2,208,Völkermarkt,2,208
+2,209,Wolfsberg,2,209
+3,305,Amstetten,3,305
+3,306,Baden,3,306
+3,307,Bruck an der Leitha,3,307
+3,308,Gänserndorf,3,308
+3,309,Gmünd,3,309
+3,310,Hollabrunn,3,310
+3,311,Horn,3,311
+3,312,Korneuburg,3,312
+3,312,Krems an der Donau,3,312
+3,313,Krems-Land,3,313
+3,314,Lilienfeld,3,314
+3,315,Melk,3,315
+3,316,Mistelbach,3,316
+3,317,Mödling,3,317
+3,318,Neunkirchen,3,318
+3,302,Sankt Pölten,3,302
+3,319,Sankt Pölten-Land,3,319
+3,320,Scheibbs,3,320
+3,321,Tulln,3,321
+3,322,Waidhofen an der Thaya,3,322
+3,322,Waidhofen an der Ybbs,3,322
+3,324,Wien-Umgebung,3,324
+3,304,Wiener Neustadt,3,304
+3,323,Wiener Neustadt-Land,3,323
+3,325,Zwettl,3,325
+4,404,Braunau am Inn,4,404
+4,405,Eferding,4,405
+4,406,Freistadt,4,406
+4,407,Gmunden,4,407
+4,408,Grieskirchen,4,408
+4,409,Kirchdorf an der Krems,4,409
+4,401,Linz,4,401
+4,410,Linz-Land,4,410
+4,411,Perg,4,411
+4,412,Ried im Innkreis,4,412
+4,413,Rohrbach,4,413
+4,414,Schärding,4,414
+4,402,Steyr,4,402
+4,415,Steyr-Land,4,415
+4,416,Urfahr-Umgebung,4,416
+4,417,Vöcklabruck,4,417
+4,403,Wels,4,403
+4,418,Wels-Land,4,418
+5,502,Hallein,5,502
+5,501,Salzburg,5,501
+5,503,Salzburg-Umgebung,5,503
+5,504,Sankt Johann im Pongau,5,504
+5,505,Tamsweg,5,505
+5,506,Zell am See,5,506
+6,602,Bruck an der Mur,6,602
+6,603,Deutschlandsberg,6,603
+6,604,Feldbach,6,604
+6,605,Fürstenfeld,6,605
+6,601,Graz,6,601
+6,606,Graz-Umgebung,6,606
+6,607,Hartberg,6,607
+6,608,Judenburg,6,608
+6,609,Knittelfeld,6,609
+6,610,Leibnitz,6,610
+6,611,Leoben,6,611
+6,612,Liezen,6,612
+6,614,Murau,6,614
+6,613,Mürzzuschlag,6,613
+6,615,Radkersburg,6,615
+6,616,Voitsberg,6,616
+6,617,Weiz,6,617
+7,702,Imst,7,702
+7,701,Innsbruck,7,701
+7,703,Innsbruck-Land,7,703
+7,704,Kitzbühel,7,704
+7,705,Kufstein,7,705
+7,706,Landeck,7,706
+7,707,Lienz,7,707
+7,708,Reutte,7,708
+7,709,Schwaz,7,709
+8,801,Bludenz,8,801
+8,802,Bregenz,8,802
+8,803,Dornbirn,8,803
+8,804,Feldkirch,8,804
+9,900,Wien,9,900

@@ -1,0 +1,6 @@
+table.table.table-striped
+  tbody
+    - @reply.enquiry.product.reply_fields.each do |field|
+      tr
+        td= field.machine_name
+        td= h @reply[field.machine_name.to_sym]

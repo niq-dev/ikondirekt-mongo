@@ -1,0 +1,23 @@
+<%= javascript_include_tag "app/partner/location_chained_select" %>
+<%= form_tag '', :method => :get do %>
+    <div class="formRow searchDrop">
+      <label>State:</label>
+      <%= select_tag(:state_code, options_for_select(@states_list, params[:state_code]), :include_blank => true, :class => "select", "data-placeholder" => "Choose a State...") %>
+    </div>
+
+    <div class="formRow searchDrop">
+      <label>Region:</label>
+      <%= select_tag(:region_code, options_for_select(@regions_list, params[:region_code]), :include_blank => true, :class => "select", "data-placeholder" => "Choose a Region...") %>
+    </div>
+
+    <div class="formRow searchDrop">
+      <label>Place:</label>
+      <%= select_tag('place_codes', options_for_select(@places_list, params[:place_codes]), :class => "fullwidth select", :multiple => true, "data-placeholder" => "Choose a Region...") %>
+      <!--<select id="place_code" data-placeholder="Choose Places" class="fullwidth select" multiple = "multiple" name="place_codes[]"></select>-->
+    </div>
+
+    <div class="divider"><span></span></div>
+    <div class="formRow">
+      <%= submit_tag "Search", :class => "buttonS bLightBlue" %>
+    </div>
+<% end %>

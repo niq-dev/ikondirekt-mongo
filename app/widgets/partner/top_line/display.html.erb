@@ -1,0 +1,38 @@
+<!-- Top line begins -->
+<div id="top">
+  <div class="wrapper">
+    <%= link_to partner_root_path, :class => "logo" do %>
+        <%= image_tag "logo.png", :alt => "logo" %>
+    <% end %>
+
+    <!-- Right top nav -->
+    <div class="topNav">
+      <ul class="userNav">
+        <li><a title="" class="search"></a></li>
+        <li>
+          <%= link_to partner_topics_path, :class => "settings" do %>
+          <% end %></li>
+        <li>
+          <% if staff_signed_in? %>
+              <%= link_to destroy_user_session_path, :method => :delete, :class => "logout" do %>
+              <% end %>
+          <% end %>
+        </li>
+        <li class="showTabletP"><a href="#" title="" class="sidebar"></a></li>
+      </ul>
+      <a title="" class="iButton"></a>
+      <a title="" class="iTop"></a>
+
+      <div class="topSearch">
+        <div class="topDropArrow"></div>
+        <form action="">
+          <input type="text" placeholder="search..." name="topSearch"/>
+          <input type="submit" value=""/>
+        </form>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+<!-- Top line ends -->

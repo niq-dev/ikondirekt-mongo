@@ -1,0 +1,31 @@
+<div class="fluid">
+  <div class="grid6">
+    <div class="widget">
+      <div class="whead">
+        <h6><%= t :tutorial %></h6>
+        <div class="clear"></div>
+      </div>
+      <table cellpadding="0" cellspacing="0" width="100%" class="tDefault">
+        <tbody>
+        <% @tutorial_topics.each do |topic| %>
+            <tr>
+              <td>
+              <%= link_to topic.name, partner_topic_path(topic) %>
+              <%= topic.body %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="grid6">
+    <div class="widget">
+      <div class="whead">
+        <h6><%= t :help %></h6>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>

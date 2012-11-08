@@ -1,0 +1,10 @@
+= javascript_include_tag :highcharts
+
+.widget
+  .whead
+    h6= t :staffs
+    .clear
+  = high_chart("my_id", @h)
+
+- content_for :page_title do
+  = t :statistics

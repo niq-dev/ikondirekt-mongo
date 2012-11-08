@@ -1,0 +1,10 @@
+- @cat_roots.each do |cat|
+  %div
+    %ul
+      = cat.name
+      = render :partial => "display_products", :locals => {:cat => cat}
+      - cat.children.each do |sub_cat|
+        %li
+          %div
+            = sub_cat.name
+            = render :partial => "display_products", :locals => {:cat => sub_cat}

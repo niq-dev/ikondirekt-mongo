@@ -1,0 +1,45 @@
+<div class="well-content">
+  <h3><%= t :create_date %>: <%= @enquiry.created_at.to_s(:short) %> </h3>
+  <%= render :partial => 'root_show' %>
+  </br>
+  <h3>Selected Partners</h3>
+  <table class="table table-striped pull-left">
+    <thead>
+    <tr>
+      <th>Bank Name</th>
+      <% @enquiry.product.reply_fields.each do |tmplt| %>
+          <th><%= tmplt.title %></th>
+      <% end %>
+      <th>State</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @enquiry.replies.each do |r| %>
+        <tr>
+          <td><%= r.company.name %></td>
+          <% @enquiry.product.reply_fields.each do |v| %>
+              <td><%= r[v.machine_name.to_sym] %></td>
+          <% end %>
+          <td><%=  r.state_name_for_customer %></td>
+          <td>
+            <%= link_to t(:details), reply_details_customer_enquiry_path(:reply_id => r.id)  %>
+          </td>
+
+        </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+  <%= link_to t(:back), customer_enquiries_path %>
+
+</div>
+
+
+<% content_for :page_title do %>
+    <%= t :enquiry_details %>
+<% end %>
+
+

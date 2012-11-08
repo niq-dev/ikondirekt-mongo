@@ -1,0 +1,22 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "hello"
+  how_it_works:   "How it works"
+  our_partners:   "Our Partners"
+  contact:        "Contact"
+  new_enquiry:    "New Enquiry"
+  my_enquiries:   "My Enquiries"
+  my_account:     "My Account"
+  sign_up:        "Sign Up"
+  sign_in:        "Sign In"
+  sign_out:       "Sign Out"
+  amount:         "Amount"
+  product:          "Product"
+  select_the_product: "Please select you a product"
+  fill_out_the_form: "Please fill out the form"
+  select_the_partners:  "Please choose the partners, which you want to send"
+  create:          "Create"
+  back:            "Back"
+

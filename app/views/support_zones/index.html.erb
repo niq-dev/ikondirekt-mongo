@@ -1,0 +1,21 @@
+<h1>Listing support_zones</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @support_zones.each do |support_zone| %>
+  <tr>
+    <td><%= link_to 'Show', support_zone %></td>
+    <td><%= link_to 'Edit', edit_support_zone_path(support_zone) %></td>
+    <td><%= link_to 'Destroy', support_zone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Support zone', new_support_zone_path %>

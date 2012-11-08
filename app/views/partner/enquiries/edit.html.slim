@@ -1,0 +1,16 @@
+= stylesheet_link_tag 'gmaps4rails'
+
+.fluid
+  .grid6
+    .widget.staticGroup
+      = render "enquiry_map"
+
+      = render "enquiry_details"
+
+      = render "enquiry_comment"
+
+      = render "enquiry_location"
+
+  .grid6
+    .widget
+      = render "reply_form"

@@ -1,0 +1,11 @@
+<%= form_for(@enquiry, :url => customer_enquiries_path) do |f| %>
+    <%= f.hidden_field :customer_user_id %>
+    <div class="field">
+      <%= f.label :product %><br />
+      <%= f.select :product_category_id, ProductCategory.all.map{ |c| [c.name, c.id] } %>
+    </div>
+    </br>
+    <div class="actions">
+      <%= f.submit "Create" %>
+    </div>
+<% end %>
