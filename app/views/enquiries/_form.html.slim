@@ -8,17 +8,18 @@
         = f.input field.machine_name.to_sym, :label => field.title
       - elsif field.type == "select"
         = f.input field.machine_name.to_sym, :collection => field.enum, :label => field.title
-  /fieldset
-  /  h3 Bitte füllen Sie Ihre Selbstauskunft Information aus
-  /  = f.simple_fields_for :parts do |ic|
-  /    = ic.input :is_accepted
-  /    = ic.input :incoming_per_month
-  /    = ic.input :outlay_per_month
-  /    = ic.input :employee
+  - if @enquiry.product.required_incoming == true
+    fieldset
+      h3 Bitte füllen Sie Ihre Selbstauskunft Information aus
+      = f.simple_fields_for :income_info do |ic|
+        = ic.input :is_accepted, :label => "Selbstauskunft oder erst bei Termin", :as => :select
+        = ic.input :incoming_per_month, :label => "Einkommen p.M."
+        = ic.input :outlay_per_month, :label => "Ausgaben p.M."
+        = ic.input :employer, :label => "Arbeitsgeber p.M."
 
   fieldset
     h3 Bitte wählen Sie die Partner aus
-    = f.association :chosen_partners, :as => :check_boxes, :collection => @enquiry.product.companies
+    = f.association :chosen_partners, :as => :check_boxes, :collection => @enquiry.product.companies, :input_html => { :checked => true }
 
   fieldset
     = f.input :comment, :as => :text, :label => "Zusatz Text", :input_html => {:class => "form-textarea" }

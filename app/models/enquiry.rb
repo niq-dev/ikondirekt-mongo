@@ -18,11 +18,10 @@ class Enquiry < Messaging
   has_many :replies, autosave: true
   belongs_to :places, class_name: "Location::Place"
 
-  accepts_nested_attributes_for :income_info
+  #accepts_nested_attributes_for :income_info
 
 
   validates :amount, presence: true, numericality: {only_integer: true}
-  validates :comment, length: {minimum: 8}
 
 
   #state machine

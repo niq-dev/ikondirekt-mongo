@@ -64,14 +64,14 @@ product_categories[2].children << product_categories[6]
 
 #create product seeds
 products = []
-products[0] = Product.create(:name => 'Konsumkredit')
-products[1] = Product.create(:name => 'Kfz-/Bike Finanzierung')
-products[2] = Product.create(:name => 'Einrichtung / Ausstattung Finanzierung')
-products[3] = Product.create(:name => 'Immobilien Finanzierung')
+products[0] = Product.create(:name => 'Konsumkredit', :required_incoming => true)
+products[1] = Product.create(:name => 'Kfz-/Bike Finanzierung', :required_incoming => true)
+products[2] = Product.create(:name => 'Einrichtung / Ausstattung Finanzierung', :required_incoming => true)
+products[3] = Product.create(:name => 'Immobilien Finanzierung', :required_incoming => true)
 
-products[4] = Product.create(:name => 'Sparbuch')
-products[5] = Product.create(:name => 'Wertpapiere')
-products[6] = Product.create(:name => 'Bausparen')
+products[4] = Product.create(:name => 'Sparbuch', :required_incoming => true)
+products[5] = Product.create(:name => 'Wertpapiere', :required_incoming => true)
+products[6] = Product.create(:name => 'Bausparen', :required_incoming => true)
 
 products[7] = Product.create(:name => 'Kfz-/Bike Leasing')
 products[8] = Product.create(:name => 'Einrichtung / Ausstattung Leasing')

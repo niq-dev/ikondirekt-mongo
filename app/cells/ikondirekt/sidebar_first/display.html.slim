@@ -31,5 +31,4 @@
             ul
               - category.products.each do |product|
                 li
-                  = product.name
                   = link_to product.name, new_enquiry_path(:product => product.id)
