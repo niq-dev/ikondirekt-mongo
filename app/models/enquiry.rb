@@ -9,15 +9,20 @@ class Enquiry < Messaging
   #field definition
   field :amount, type: Integer
   field :comment, type: String
-  #field :chosen_partners, type: Array
   has_and_belongs_to_many :chosen_partners, class_name: "Company"
 
   #relationship
   belongs_to :customer
   belongs_to :product, :autosave => true
-  has_one :income_info
+  embeds_one :income_info
   has_many :replies, autosave: true
   belongs_to :places, class_name: "Location::Place"
+
+  accepts_nested_attributes_for :income_info
+
+
+  validates :amount, presence: true, numericality: {only_integer: true}
+  validates :comment, length: {minimum: 8}
 
 
   #state machine

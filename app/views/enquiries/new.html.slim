@@ -1,5 +1,2 @@
-h2.page-title Neue Anfrage - Schritt 2.
+h2.page-title Neue Anfrage - #{Product.find(params[:product]).name}
 = render "form"
-
-/- content_for :scripts_include do
-/  = javascript_include_tag "app/ikondirekt/enquiries"

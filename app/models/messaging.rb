@@ -8,11 +8,9 @@ end
 
 class IncomeInfo
   include Mongoid::Document
-  field :av_expense_per_month, type: Integer
-  field :employee, type: String
-  field :salary_per_month, type: Integer
-  field :state, type: String
-  field :visible_online, type: String
-
-  belongs_to :enquiry
+  field :incoming_per_month, type: Integer
+  field :outlay_per_month, type: Integer
+  field :employer, type: String
+  field :is_accepted, type: Boolean
+  embedded_in :enquiry
 end

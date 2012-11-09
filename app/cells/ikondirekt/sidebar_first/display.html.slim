@@ -1,9 +1,22 @@
 .well
-  p = t :username
-  input type="text"
-  p = t :password
-  input type="password"
-  button type="submit" = t :sign_in
+  - unless customer_signed_in?
+    = form_tag customer_session_path do
+      = text_field_tag 'customer[email]'
+      = password_field_tag 'customer[password]'
+      = check_box_tag 'customer[remember_me]'
+      = label_tag 'customer[remember_me]', 'Remember me'
+      button = t :sign_in
+      = link_to "Forgot your password?", new_password_path('customer')
+  - else
+    p hallo, #{current_customer.name}!
+    ul
+      li
+        = link_to t(:my_enquiries), enquiries_path
+      li
+        = link_to t(:my_profile), edit_account_profile_path(current_customer)
+      li
+        = link_to t(:sign_out), destroy_customer_session_path, :method => :delete
+
 
 
 .sidewell
@@ -18,5 +31,5 @@
             ul
               - category.products.each do |product|
                 li
-                  /= product.name
+                  = product.name
                   = link_to product.name, new_enquiry_path(:product => product.id)

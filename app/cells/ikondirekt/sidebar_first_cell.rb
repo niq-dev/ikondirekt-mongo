@@ -1,5 +1,5 @@
 module Ikondirekt
-  class SidebarFirstCell < Cell::Rails
+  class SidebarFirstCell < ApplicationCell
     def display
       render
     end

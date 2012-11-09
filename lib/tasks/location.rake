@@ -20,10 +20,11 @@ namespace :location do
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
       row = row.to_hash.with_indifferent_access
-      Location::State.where(:code => row[:State_id]).first.regions.create!({
-                                                                               :code => row[:Region_id],
-                                                                               :name => row[:Region],
-                                                                           })
+      Location::Region.create!({
+                                   :code => row[:Region_id],
+                                   :name => row[:Region],
+                                   :state_code => row[:State_id]
+                               })
     end
 
     file_place= "vendor/data/location/GeoPC_AT_Place.csv"
@@ -31,10 +32,11 @@ namespace :location do
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
       row = row.to_hash.with_indifferent_access
-      Location::Region.where(:code => row[:Region_id]).first.places.create!({
-                                                                                :code => row[:ZIP],
-                                                                                :name => row[:City]
-                                                                            })
+      Location::Place.create!({
+                                  :code => row[:ZIP],
+                                  :name => row[:City],
+                                  :region_code => row[:Region_id]
+                              })
     end
   end
 end

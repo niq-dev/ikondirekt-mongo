@@ -6,21 +6,21 @@ def rand_str(len)
   tokens = ("a".."z").to_a
   rand_str = ""
   1.upto(len) { |i| rand_str << tokens[rand(tokens.size-1)] }
-  return rand_str
+  rand_str
 end
 
 def rand_int(len)
   tokens = ("0".."9").to_a
   rand_str = ""
   1.upto(len) { |i| rand_str << tokens[rand(tokens.size-1)] }
-  return rand_str
+  rand_str
 end
 
 def rand_text(len)
   tokens = ("0".."9").to_a + (" ").to_a
   rand_str = ""
   1.upto(len) { |i| rand_str << tokens[rand(tokens.size-1)] }
-  return rand_str
+  rand_str
 end
 
 # Create Users Seeds
@@ -171,711 +171,439 @@ branches[0].staffs << staffs[0] << staffs[1]
 
 #Create Product Form
 #1 - Consumption Credit       - Konsumfinanzierung
-products[0].enquiry_fields.create(machine_name: :reason,
-                                  title: "Zweck",
-                                  type: :input,
-                                  positon: 1)
-products[0].enquiry_fields.create(machine_name: :period,
-                                  title: "Laufzeit",
-                                  type: :select,
-                                  enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                  postion: 2)
-products[0].enquiry_fields.create(machine_name: :repayment,
-                                  title: "Rückführung",
-                                  type: :select,
-                                  enum: ["Raten", "Endfällig"],
-                                  postion: 3)
-products[0].reply_fields.create(machine_name: :effective_interest_rate,
-                                title: "Effektivzinssatz (Indikation)",
-                                type: :input,
-                                suffix: "%",
-                                postion: 1)
-products[0].reply_fields.create(machine_name: :total,
-                                title: "Gesamtbelastung in EUR",
-                                type: :input,
-                                suffix: "€",
-                                postion: 2)
-products[0].reply_fields.create(machine_name: :monthly_interest_rate,
-                                title: "Gesamtrate p.M.",
-                                type: :input,
-                                suffix: "%",
-                                postion: 3)
+products[0].enquiry_fields.create!(machine_name: :reason,
+                                   title: "Zweck",
+                                   type: :input,
+                                   positon: 1)
+products[0].enquiry_fields.create!(machine_name: :period,
+                                   title: "Laufzeit",
+                                   type: :select,
+                                   enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                   postion: 2)
+products[0].enquiry_fields.create!(machine_name: :repayment,
+                                   title: "Rückführung",
+                                   type: :select,
+                                   enum: ["Raten", "Endfällig"],
+                                   postion: 3)
+products[0].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: "Effektivzinssatz (Indikation)",
+                                 type: :input,
+                                 suffix: "%",
+                                 postion: 1)
+products[0].reply_fields.create!(machine_name: :total,
+                                 title: "Gesamtbelastung in EUR",
+                                 type: :input,
+                                 suffix: "€",
+                                 postion: 2)
+products[0].reply_fields.create!(machine_name: :monthly_interest_rate,
+                                 title: "Gesamtrate p.M.",
+                                 type: :input,
+                                 suffix: "%",
+                                 postion: 3)
+
 #2 - Car & Bike Credit        - Kfz-/Bike Finanzierung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Marke',
-                                                :product_id => 2,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Type',
-                                                :product_id => 2,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit',
-                                                :product_id => 2,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Rückführung',
-                                                :product_id => 2,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Raten, Endfällig',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Effektivzinssatz (Indikation)',
-                                              :product_id => 2,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtbelastung in EUR',
-                                              :product_id => 2,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtrate p.M.',
-                                              :product_id => 1,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 3)
+products[1].enquiry_fields.create!(machine_name: :mark,
+                                   title: 'Marke',
+                                   type: :input,
+                                   position: 1)
+products[1].enquiry_fields.create!(machine_name: :type,
+                                   title: 'Type',
+                                   type: :input,
+                                   position: 2)
+products[1].enquiry_fields.create!(machine_name: :period,
+                                   title: 'Laufzeit',
+                                   type: :select,
+                                   enum: '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren',
+                                   position: 3)
+products[1].enquiry_fields.create!(machine_name: :repayment,
+                                   title: 'Rückführung',
+                                   type: :select,
+                                   enum: ["Raten", "Endfällig"],
+                                   position: 4)
+products[1].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: 'Effektivzinssatz (Indikation)',
+                                 type: :input,
+                                 position: 1)
+products[1].reply_fields.create!(machine_name: :total,
+                                 title: 'Gesamtbelastung in EUR',
+                                 type: :input,
+                                 position: 2)
+products[1].reply_fields.create!(machine_name: :monthly_interest_rate,
+                                 title: 'Gesamtrate p.M.',
+                                 type: :input,
+                                 position: 3)
 #3 - Furniture & Decor Credit - Einrichtung / Ausstattung Finanzierung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Zweck',
-                                                :product_id => 3,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit',
-                                                :product_id => 3,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Rückführung',
-                                                :product_id => 3,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Raten, Endfällig',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Effektivzinssatz (Indikation)',
-                                              :product_id => 3,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtbelastung in EUR',
-                                              :product_id => 3,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtrate p.M.',
-                                              :product_id => 3,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 3)
+products[2].enquiry_fields.create!(machine_name: :reason,
+                                   title: "Zweck",
+                                   type: :input,
+                                   position: 1)
+products[2].enquiry_fields.create!(machine_name: :period,
+                                   title: "Laufzeit",
+                                   type: :select,
+                                   enum: '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
+                                   position: 2)
+products[2].enquiry_fields.create!(machine_name: :repayment,
+                                   title: "Rückführung",
+                                   type: :select,
+                                   enum: 'Raten, Endfällig',
+                                   position: 3)
+products[2].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: "Effektivzinssatz (Indikation)",
+                                 type: :input,
+                                 position: 1)
+products[2].reply_fields.create!(machine_name: :total,
+                                 title: "Gesamtbelastung in EUR",
+                                 type: :input,
+                                 position: 2)
+products[2].reply_fields.create!(machine_name: :monthly_interest_rate,
+                                 title: "Gesamtrate p.M.",
+                                 type: :input,
+                                 position: 3)
 #4 - House & Home Credit      - Immobilien Finanzierung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Hypothek',
-                                                :product_id => 4,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja, Nein',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit',
-                                                :product_id => 4,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Rückführung',
-                                                :product_id => 4,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Raten, Endfällig',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Effektivzinssatz (Indikation)',
-                                              :product_id => 4,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtbelastung in EUR',
-                                              :product_id => 4,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Gesamtrate p.M.',
-                                              :product_id => 4,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 3)
+products[3].enquiry_fields.create!(machine_name: :mortgage,
+                                   name: 'Hypothek',
+                                   type: :select,
+                                   enum: 'Ja, Nein',
+                                   position: 1)
+products[3].enquiry_fields.create!(machine_name: :period,
+                                   title: "Laufzeit",
+                                   type: :select,
+                                   enum: '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
+                                   position: 2)
+products[3].enquiry_fields.create!(machine_name: :repayment,
+                                   title: "Rückführung",
+                                   type: :select,
+                                   enum: 'Raten, Endfällig',
+                                   position: 3)
+products[3].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: "Effektivzinssatz (Indikation)",
+                                 type: :input,
+                                 position: 1)
+products[3].reply_fields.create!(machine_name: :total,
+                                 title: "'Gesamtbelastung in EUR'",
+                                 type: :input,
+                                 position: 2)
+products[3].reply_fields.create!(machine_name: :monthly_interest_rate,
+                                 title: "Gesamtrate p.M.",
+                                 type: :input,
+                                 position: 3)
 #5 - Deposit                  - Sparbuch
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit',
-                                                :product_id => 5,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Fixzins / Variabel',
-                                                :product_id => 5,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Fix, Variabel, Alle',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Effektivzinssatz (Indikation)',
-                                              :product_id => 5,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Endbetrag in EUR',
-                                              :product_id => 5,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
+products[4].enquiry_fields.create!(machine_name: :period,
+                                   title: "Laufzeit",
+                                   type: :select,
+                                   enum: '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahren, 8 Jahren, 9 Jahren, 10 Jahren',
+                                   position: 1)
+products[4].enquiry_fields.create!(machine_name: :fixed_variable_rate,
+                                   name: 'Fixzins / Variabel',
+                                   type: :select,
+                                   enum: 'Fix, Variabel, Alle',
+                                   position: 2)
+products[4].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: "Effektivzinssatz (Indikation)",
+                                 type: :input,
+                                 position: 1)
+products[4].reply_fields.create!(machine_name: :final_amount,
+                                 name: 'Endbetrag in EUR',
+                                 type: :input,
+                                 position: 2)
 #6 - Bond                       - Wertpapiere
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit(1-99 Jahren)',
-                                                :product_id => 6,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Wertpapierart',
-                                                :product_id => 6,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Alle, Aktien, Anleihen, Fonds, Sonstige, Alle',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Risikobereitschaft',
-                                                :product_id => 6,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Gering, Mittel, Hoch, Alle',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'ISIN-Nr.',
-                                              :product_id => 6,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Kaufkurs',
-                                              :product_id => 6,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Spesen',
-                                              :product_id => 6,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 3)
+products[5].enquiry_fields.create!(machine_name: :period,
+                                   name: 'Laufzeit',
+                                   type: :input,
+                                   position: 1)
+products[5].enquiry_fields.create!(machine_name: :type,
+                                   name: 'Wertpapierart',
+                                   type: :select,
+                                   enum: 'Alle, Aktien, Anleihen, Fonds, Sonstige, Alle',
+                                   position: 2)
+products[5].enquiry_fields.create!(machine_name: :risk_appetite,
+                                   name: 'Risikobereitschaft',
+                                   type: :select,
+                                   enum: 'Gering, Mittel, Hoch, Alle',
+                                   position: 3)
+products[5].reply_fields.create!(machine_name: :isin,
+                                 name: 'ISIN-Nr.',
+                                 type: :input,
+                                 position: 1)
+products[5].reply_fields.create!(machine_name: :price,
+                                 name: 'Kaufkurs',
+                                 type: :input,
+                                 position: 2)
+products[5].reply_fields.create!(machine_name: :expenses,
+                                 name: 'Spesen',
+                                 type: :input,
+                                 position: 3)
 #7 - Savings for Housing        - Bausparen
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Betrag',
-                                                :product_id => 7,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Laufzeit',
-                                                :product_id => 7,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahrenn',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Zahlungsart',
-                                                :product_id => 7,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Monatlich, Jährlich, Einmalerlag',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Sparleistung',
-                                                :product_id => 7,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Monatlich EURO 10.00 - 100.00 , Jährlich EURO 0.00 - 1200.00, Einmalerlag EURO 0.00 - 7200.00',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Vertragbeginn',
-                                                :product_id => 7,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Monate, Jahre ab aktuellem Datum',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Effektivzinssatz (Indikation)',
-                                              :product_id => 7,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Endbetrag in EUR',
-                                              :product_id => 7,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
+products[6].enquiry_fields.create!(machine_name: :period,
+                                   title: "Laufzeit",
+                                   type: :select,
+                                   enum: '1 Jahre, 2 Jahren, 3 Jahren, 4 Jahren, 5 Jahren, 6 Jahren, 7 Jahrenn',
+                                   position: 1)
+products[6].enquiry_fields.create!(machine_name: :payment_type,
+                                   name: 'Zahlungsart',
+                                   type: :select,
+                                   enum: 'Monatlich, Jährlich, Einmalerlag',
+                                   position: 2)
+products[6].enquiry_fields.create!(machine_name: :level,
+                                   name: 'Sparleistung',
+                                   type: :select,
+                                   enum: 'Monatlich EURO 10.00 - 100.00 , Jährlich EURO 0.00 - 1200.00, Einmalerlag EURO 0.00 - 7200.00',
+                                   position: 3)
+products[6].enquiry_fields.create!(machine_name: :contract_start,
+                                   name: 'Vertragsbeginn',
+                                   type: :select,
+                                   enum: 'Monate, Jahre ab aktuellem Datum',
+                                   position: 4)
+products[6].reply_fields.create!(machine_name: :effective_interest_rate,
+                                 title: "Effektivzinssatz (Indikation)",
+                                 type: :input,
+                                 position: 1)
+products[6].reply_fields.create!(machine_name: :final_amount,
+                                 name: 'Endbetrag in EUR',
+                                 type: :input,
+                                 position: 2)
 #8 - Car & Bike Leasing         - Kfz-/Bike Leasing
 #9 - Furniture & Decor Leasing  - Einrichtung / Ausstattung Leasing
 #10 - House & Home Leasing      - Einrichtung / Ausstattung Leasing
 #11 - Car & Bike Leasing        - Immobilien  Leasing
 #12 - Life Insurance            - Lebensversicherungen
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Lebensversicherung',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Erleben,Er- & Ableben,Ableben,Alle',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Versicherungssumme',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Inkl. Staatlich geförderte Zukunftsvorsorge',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Grundlage',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Beitragsorientiert,Leistungsorientiert,Alle',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Art',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Klassisch,Fondsgebunden,Sonstige,Alle',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Versicherungsdauer',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '5 Jahren,10 Jahren,15 Jahren,20 Jahren,25 Jahren,30 Jahren,',
-                                                :field_regex => '',
-                                                :position => 6)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Zweck der Versicherung',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Absicherung,Kreditbesicherung,kindervorsorge',
-                                                :field_regex => '',
-                                                :position => 7)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Einzahlung',
-                                                :product_id => 12,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'laufend mtl., Einmalerlag',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Versicherungssumme',
-                                              :product_id => 12,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 12,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 2)
+products[10].enquiry_fields.create!(machine_name: :insurance_type,
+                                    name: 'Lebensversicherung',
+                                    type: :select,
+                                    enum: 'Erleben,Er- & Ableben,Ableben,Alle',
+                                    position: 1)
+products[10].enquiry_fields.create!(machine_name: :summe,
+                                    name: 'Versicherungssumme',
+                                    type: :input,
+                                    position: 2)
+products[10].enquiry_fields.create!(machine_name: :state_sponsored,
+                                    name: 'Inkl. Staatlich geförderte Zukunftsvorsorge',
+                                    type: :select,
+                                    enum: 'Ja,Nein',
+                                    position: 3)
+products[10].enquiry_fields.create!(machine_name: :basis,
+                                    name: 'Grundlage',
+                                    type: :select,
+                                    enum: 'Beitragsorientiert,Leistungsorientiert,Alle',
+                                    position: 4)
+products[10].enquiry_fields.create!(machine_name: :type,
+                                    name: 'Art',
+                                    type: :select,
+                                    enum: 'Klassisch,Fondsgebunden,Sonstige,Alle',
+                                    position: 5)
+products[10].enquiry_fields.create!(machine_name: :insurance_period,
+                                    name: 'Versicherungsdauer',
+                                    type: :select,
+                                    enum: '5 Jahren,10 Jahren,15 Jahren,20 Jahren,25 Jahren,30 Jahren,',
+                                    position: 6)
+products[10].enquiry_fields.create!(machine_name: :reason,
+                                    name: 'Zweck der Versicherung',
+                                    type: :select,
+                                    enum: 'Absicherung,Kreditbesicherung,kindervorsorge',
+                                    position: 7)
+products[10].enquiry_fields.create!(machine_name: :prepayment,
+                                    name: 'Einzahlung',
+                                    type: :select,
+                                    enum: 'laufend mtl., Einmalerlag',
+                                    position: 5)
+products[10].reply_fields.create!(machine_name: :summe,
+                                  name: 'Versicherungssumme',
+                                  type: :input,
+                                  position: 1)
+products[10].reply_fields.create!(:name => 'Rate p.M.',
+                                  type: :input,
+                                  position: 2)
 #13 - Heath Insurance           - Krankenversicherung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Sonderklasse',
-                                                :product_id => 13,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Bonus Programm falls keine Inanspruchnahme',
-                                                :product_id => 13,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Krankenhaus Taggeld',
-                                                :product_id => 13,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Zahnversicherung',
-                                                :product_id => 13,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Sonstige',
-                                                :product_id => 13,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 13,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
+products[11].enquiry_fields.create!(machine_name: :special_class,
+                                    name: 'Sonderklasse',
+                                    type: :select,
+                                    enum: 'Ja,Nein',
+                                    position: 1)
+products[11].enquiry_fields.create!(machine_name: :bonus_program,
+                                    name: 'Bonus Programm falls keine Inanspruchnahme',
+                                    type: :select,
+                                    enum: 'Ja,Nein',
+                                    position: 2)
+products[11].enquiry_fields.create!(machine_name: :daily_allowance,
+                                    name: 'Krankenhaus Taggeld',
+                                    type: :select,
+                                    enum: 'Ja,Nein',
+                                    position: 3)
+products[11].enquiry_fields.create!(machine_name: :dental_insurance,
+                                    name: 'Zahnversicherung',
+                                    type: :select,
+                                    enum: 'Ja,Nein',
+                                    position: 4)
+products[11].reply_fields.create!(machine_name: :interest_rate,
+                                  name: 'Rate p.M.',
+                                  type: :input,
+                                  position: 1)
 #14 - Accident Insurance        - Unfallversicherung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Risiken',
-                                                :product_id => 14,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Privat,Beruf,Alle',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Kategorie Senioren',
-                                                :product_id => 14,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Kinder,Teenager,Senioren,Alle',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 14,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-#15 - Jobs & Provision Insurance- Job & Vorsorge
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Absicherung',
-                                                :product_id => 15,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Berufsunfähigkeit,Pflegevorsorge,Begräbniskosten,Alle',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Sonstige',
-                                                :product_id => 15,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 15,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-#16 - House & Home Insurance    - Haus & Wohnung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Nutzfläche in m2',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Wert',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Ausstattung',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Einfach,Komfortabel,Gehoben,Exklusiv',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Land',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Wien,NÖ,Bgld.,Stmk.,OÖ,Kärnten,Salzburg,Tirol,Vorarlberg',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Postleitzahl der Immobilie',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Haus / Wohnung',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Haus,Wohnung,Sonstiges',
-                                                :field_regex => '',
-                                                :position => 6)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'ständig bewohnt',
-                                                :product_id => 16,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Monat p.a.,2 Monate p.a.,3 Monat p.a.,4 Monat p.a.,5 Monat p.a.,6 Monat p.a.,7 Monat p.a.,8 Monat p.a.,6 Monat p.a.,9 Monat p.a.,10 Monat p.a.,11 Monat p.a.,12 Monat p.a.',
-                                                :field_regex => '',
-                                                :position => 7)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 16,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-#17 - Car & Bike Insurance      - Kfz & Bike Versicherung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Marke',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Modell',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Treibstoff',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Benzin,Diesel,Elektro,Sonstige',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Anzahl Türen',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1,2,3,4,5,6,7',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Bauart',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Cabriolet,Coupe,Sonstige',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'kW / PS',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '9999 kw,9999 PS',
-                                                :field_regex => '',
-                                                :position => 6)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Kilometer pro Jahr',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 7)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Wert Sonderausstattung',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 8)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Datum Erstzulassung',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'text',
-                                                :field_enum => '',
-                                                :field_regex => '',
-                                                :position => 9)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Alter des Fahrzeuges (bei Anschaffung durch Sie) ',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'neu,bis 1 Jahr,bis 2 Jahre,darüber',
-                                                :field_regex => '',
-                                                :position => 10)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Winterruhe',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 11)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Art der Finanzierung',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Barankauf,Leasing,Kredit',
-                                                :field_regex => '',
-                                                :position => 12)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Ist das Auto bereits auf Sie zugelassen',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 13)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Neuversicherung ohne Bonusstufe',
-                                                :product_id => 17,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 14)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 17,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-#18 - Tourism Insurance         - Reiseversicherung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Reisekostenstorno',
-                                                :product_id => 18,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Rücktransport',
-                                                :product_id => 18,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Gepäckversicherung',
-                                                :product_id => 18,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Selbstbehalt',
-                                                :product_id => 18,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 18,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
-#19 - Legal expenses Insurance  - Rechtsschutzversicherung
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Berufliche Risiken',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 1)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Private Risiken',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 2)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Anwaltsvertretung',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 3)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Strassenverkehr',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Ja,Nein',
-                                                :field_regex => '',
-                                                :position => 4)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Gültigkeit',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'National,Europa,Weltweit',
-                                                :field_regex => '',
-                                                :position => 5)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Versicherte Personen',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => '1 Person,1 Person mit Kind(ern),Paar ohne Kind(er),Paar mit Kind(ern)',
-                                                :field_regex => '',
-                                                :position => 6)
-formFieldTemplates = EnquiryFormTemplate.create(:name => 'Aktuelle Tätigkeit',
-                                                :product_id => 19,
-                                                :required => true,
-                                                :field_type => 'select',
-                                                :field_enum => 'Angestellt,Angestellt & Selbständig,Selbständig,Pensionär,Nicht berufstätig,Sonstige',
-                                                :field_regex => '',
-                                                :position => 7)
-formFieldTemplates = ReplyFormTemplate.create(:name => 'Rate p.M.',
-                                              :product_id => 19,
-                                              :required => true,
-                                              :field_type => 'text',
-                                              :field_enum => '',
-                                              :field_regex => '',
-                                              :position => 1)
+#products[12].enquiry_fields.create!(:name => 'Risiken',
+#                                    type: :select,
+#                                    enum: 'Privat,Beruf,Alle',
+#                                    position: 1)
+#products[12].enquiry_fields.create!(:name => 'Kategorie Senioren',
+#                                    type: :select,
+#                                    enum: 'Kinder,Teenager,Senioren,Alle',
+#                                    position: 2)
+#products[12].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  enum: '',
+#                                  position: 1)
+##15 - Jobs & Provision Insurance- Job & Vorsorge
+#products[13].enquiry_fields.create!(:name => 'Absicherung',
+#                                    type: :select,
+#                                    enum: 'Berufsunfähigkeit,Pflegevorsorge,Begräbniskosten,Alle',
+#                                    position: 1)
+#products[13].enquiry_fields.create!(:name => 'Sonstige',
+#                                    type: :input,
+#                                    enum: '',
+#                                    position: 2)
+#products[13].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  enum: '',
+#                                  position: 1)
+##16 - House & Home Insurance    - Haus & Wohnung
+#products[14].enquiry_fields.create!(:name => 'Nutzfläche in m2',
+#                                    type: :input,
+#                                    position: 1)
+#products[14].enquiry_fields.create!(:name => 'Wert',
+#                                    type: :input,
+#                                    position: 2)
+#products[14].enquiry_fields.create!(:name => 'Ausstattung',
+#                                    type: :select,
+#                                    enum: 'Einfach,Komfortabel,Gehoben,Exklusiv',
+#                                    position: 3)
+#products[14].enquiry_fields.create!(:name => 'Land',
+#                                    type: :select,
+#                                    enum: 'Wien,NÖ,Bgld.,Stmk.,OÖ,Kärnten,Salzburg,Tirol,Vorarlberg',
+#                                    position: 4)
+#products[14].enquiry_fields.create!(:name => 'Postleitzahl der Immobilie',
+#                                    type: :input,
+#                                    position: 5)
+#products[14].enquiry_fields.create!(:name => 'Haus / Wohnung',
+#                                    :product_id => 16,
+#                                    type: :select,
+#                                    enum: 'Haus,Wohnung,Sonstiges',
+#                                    position: 6)
+#products[14].enquiry_fields.create!(:name => 'ständig bewohnt',
+#                                    type: :select,
+#                                    enum: '1 Monat p.a.,2 Monate p.a.,3 Monat p.a.,4 Monat p.a.,5 Monat p.a.,6 Monat p.a.,7 Monat p.a.,8 Monat p.a.,6 Monat p.a.,9 Monat p.a.,10 Monat p.a.,11 Monat p.a.,12 Monat p.a.',
+#                                    position: 7)
+#products[14].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  position: 1)
+##17 - Car & Bike Insurance      - Kfz & Bike Versicherung
+#products[15].enquiry_fields.create!(:name => 'Marke',
+#                                    type: :input,
+#                                    position: 1)
+#products[15].enquiry_fields.create!(:name => 'Modell',
+#                                    type: :input,
+#                                    position: 2)
+#products[15].enquiry_fields.create!(:name => 'Treibstoff',
+#                                    type: :select,
+#                                    enum: 'Benzin,Diesel,Elektro,Sonstige',
+#                                    position: 3)
+#products[15].enquiry_fields.create!(:name => 'Anzahl Türen',
+#                                    type: :select,
+#                                    enum: '1,2,3,4,5,6,7',
+#                                    position: 4)
+#products[15].enquiry_fields.create!(:name => 'Bauart',
+#                                    type: :select,
+#                                    enum: 'Cabriolet,Coupe,Sonstige',
+#                                    position: 5)
+#products[15].enquiry_fields.create!(:name => 'kW / PS',
+#                                    type: :select,
+#                                    enum: '9999 kw,9999 PS',
+#                                    position: 6)
+#products[15].enquiry_fields.create!(:name => 'Kilometer pro Jahr',
+#                                    type: :input,
+#                                    enum: '',
+#                                    position: 7)
+#products[15].enquiry_fields.create!(:name => 'Wert Sonderausstattung',
+#                                    type: :input,
+#                                    enum: '',
+#                                    position: 8)
+#products[15].enquiry_fields.create!(:name => 'Datum Erstzulassung',
+#                                    type: :input,
+#                                    enum: '',
+#                                    position: 9)
+#products[15].enquiry_fields.create!(:name => 'Alter des Fahrzeuges (bei Anschaffung durch Sie) ',
+#                                    type: :select,
+#                                    enum: 'neu,bis 1 Jahr,bis 2 Jahre,darüber',
+#                                    position: 10)
+#products[15].enquiry_fields.create!(:name => 'Winterruhe',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 11)
+#products[15].enquiry_fields.create!(:name => 'Art der Finanzierung',
+#                                    type: :select,
+#                                    enum: 'Barankauf,Leasing,Kredit',
+#                                    position: 12)
+#products[15].enquiry_fields.create!(:name => 'Ist das Auto bereits auf Sie zugelassen',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 13)
+#products[15].enquiry_fields.create!(:name => 'Neuversicherung ohne Bonusstufe',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 14)
+#products[15].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  position: 1)
+##18 - Tourism Insurance         - Reiseversicherung
+#products[16].enquiry_fields.create!(:name => 'Reisekostenstorno',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 1)
+#products[16].enquiry_fields.create!(:name => 'Rücktransport',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 2)
+#products[16].enquiry_fields.create!(:name => 'Gepäckversicherung',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 3)
+#products[16].enquiry_fields.create!(:name => 'Selbstbehalt',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 4)
+#products[16].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  position: 1)
+##19 - Legal expenses Insurance  - Rechtsschutzversicherung
+#products[17].enquiry_fields.create!(:name => 'Berufliche Risiken',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 1)
+#products[17].enquiry_fields.create!(:name => 'Private Risiken',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 2)
+#products[17].enquiry_fields.create!(:name => 'Anwaltsvertretung',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 3)
+#products[17].enquiry_fields.create!(:name => 'Strassenverkehr',
+#                                    type: :select,
+#                                    enum: 'Ja,Nein',
+#                                    position: 4)
+#products[17].enquiry_fields.create!(:name => 'Gültigkeit',
+#                                    type: :select,
+#                                    enum: 'National,Europa,Weltweit',
+#                                    position: 5)
+#products[17].enquiry_fields.create!(:name => 'Versicherte Personen',
+#                                    type: :select,
+#                                    enum: '1 Person,1 Person mit Kind(ern),Paar ohne Kind(er),Paar mit Kind(ern)',
+#                                    position: 6)
+#products[17].enquiry_fields.create!(:name => 'Aktuelle Tätigkeit',
+#                                    type: :select,
+#                                    enum: 'Angestellt,Angestellt & Selbständig,Selbständig,Pensionär,Nicht berufstätig,Sonstige',
+#                                    position: 7)
+#products[17].reply_fields.create!(:name => 'Rate p.M.',
+#                                  type: :input,
+#                                  position: 1)
 
 #Create TopicCategory
 topic_categories = []

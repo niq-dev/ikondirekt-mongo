@@ -80,36 +80,36 @@ class EnquiriesController < Customer::BaseController
   # POST /enquiries
   # POST /enquiries.json
   def create
-    if customer_signed_in?
       @enquiry = current_customer.enquiries.new(params[:enquiry])
-      respond_to do |format|
-        if @enquiry.save
-          format.html { redirect_to enquiries_path, notice: 'Enquiry was successfully created.' }
-          format.json { render json: enquiries_path, status: :created, location: @enquiry }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @enquiry.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      redirect_to new_customer_registration_path, params
-    end
-  end
-
-  # PUT /enquiries/1
-  # PUT /enquiries/1.json
-  def update
-    @enquiry = Enquiry.find(params[:id])
 
     respond_to do |format|
-      if @enquiry.update_attributes(params[:enquiry])
-        format.html { redirect_to @enquiry, notice: 'Enquiry was successfully updated.' }
-        format.json { head :no_content }
+      if @enquiry.save
+        format.html { redirect_to enquiries_path, notice: 'Enquiry was successfully created.' }
+        format.json { render json: enquiries_path, status: :created, location: @enquiry }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "new", :papa => "sdfsd"}
         format.json { render json: @enquiry.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /enquiries
+  # POST /enquiries.json
+  def create_with_sign_up
+    if customer_signed_in?
+      @enquiry = current_customer.enquiries.new(params[:enquiry])
+    else
+      @enquiry = Enquiry.new(params[:enquiry])
+    end
+    #respond_to do |format|
+    #  if @enquiry.save
+    #    format.html { redirect_to root_path, notice: 'Enquiry was successfully created.' }
+    #    format.json { render json: root_path, status: :created, location: @enquiry }
+    #  else
+    #    format.html { render action: "new", product: parames[:product] }
+    #    format.json { render json: @enquiry.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # DELETE /enquiries/1

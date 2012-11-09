@@ -1,6 +1,9 @@
 class Product
   include Mongoid::Document
+
   field :name, type: String
+  field :name, type: Boolean, default: false
+
   has_many :enquiries, :autosave => true
   belongs_to :category, class_name: "ProductCategory"
   embeds_many :enquiry_fields, class_name: "DynamicField::FieldUnit"
