@@ -4,20 +4,20 @@ require 'spec_helper'
 describe Enquiry do
 
   before :each do
-    Location::State.create(:code => 9, :name => "Wien", :language => "de")
-    Location::Region.create(:code => 900, :name => "Wien", :state_code => 9)
-    Location::Place.create(:code => 1100, :name => "Favoriten", :region_code => 900)
-    @customer = Customer.create!(:email => 'c@1.com',
-                                 :password => '123456',
-                                 :password_confirmation => '123456',
-                                 :first_name => "Yifeng",
-                                 :last_name => "Qin",
-                                 :gentler => "",
-                                 :title => "",
-                                 :birthday => "",
-                                 :mobile => "+43 69911091138",
-                                 :address => {:place_code => 1010,
-                                              :street => "waldgasse 17"})
+    #Location::State.create(:code => 9, :name => "Wien", :language => "de")
+    #Location::Region.create(:code => 900, :name => "Wien", :state_code => 9)
+    #Location::Place.create(:code => 1100, :name => "Favoriten", :region_code => 900)
+    #@customer = Customer.create!(:email => 'c@1.com',
+    #                             :password => '123456',
+    #                             :password_confirmation => '123456',
+    #                             :first_name => "Yifeng",
+    #                             :last_name => "Qin",
+    #                             :gentler => "",
+    #                             :title => "",
+    #                             :birthday => "",
+    #                             :mobile => "+43 69911091138",
+    #                             :address => {:place_code => 1010,
+    #                                          :street => "waldgasse 17"})
     @product = Product.create(:name => 'Konsumkredit')
 
     @product.enquiry_fields.create!(machine_name: :mark,
@@ -53,7 +53,18 @@ describe Enquiry do
   end
 
   it "should create a new instance with incoming info" do
-    @enquiry = @customer.enquiries.new(:product => @product)
+    #@enquiry = @customer.enquiries.new(:product => @product)
+    @enquiry = Enquiry.new(:product => Product.first)
+    @enquiry.amount = 123
+    @enquiry.period("123456")
+    @enquiry.reason("blsdfhlsg")
     @enquiry.save!
+
+    Enquiry.count.should be 1
+    @enquiry_back = Enquiry.first
+    @enquiry_back.should_not be_nil
+    @enquiry_back.amount.should be 123
+    @enquiry_back.reason.should be "blsdfhlsg"
+
   end
 end

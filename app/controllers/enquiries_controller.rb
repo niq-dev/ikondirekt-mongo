@@ -80,14 +80,14 @@ class EnquiriesController < Customer::BaseController
   # POST /enquiries
   # POST /enquiries.json
   def create
-      @enquiry = current_customer.enquiries.new(params[:enquiry])
-
+    @enquiry = current_customer.enquiries.new(params[:enquiry])
+    session[:enquiry] = params[:enquiry]
     respond_to do |format|
       if @enquiry.save
-        format.html { redirect_to enquiries_path, notice: 'Enquiry was successfully created.' }
-        format.json { render json: enquiries_path, status: :created, location: @enquiry }
+        format.html { redirect_to @enquiry, notice: 'Enquiry was successfully created.' }
+        format.json { render json: @enquiry, status: :created, location: @enquiry }
       else
-        format.html { render action: "new", :papa => "sdfsd"}
+        format.html { render action: "new"}
         format.json { render json: @enquiry.errors, status: :unprocessable_entity }
       end
     end
@@ -101,15 +101,15 @@ class EnquiriesController < Customer::BaseController
     else
       @enquiry = Enquiry.new(params[:enquiry])
     end
-    #respond_to do |format|
-    #  if @enquiry.save
-    #    format.html { redirect_to root_path, notice: 'Enquiry was successfully created.' }
-    #    format.json { render json: root_path, status: :created, location: @enquiry }
-    #  else
-    #    format.html { render action: "new", product: parames[:product] }
-    #    format.json { render json: @enquiry.errors, status: :unprocessable_entity }
-    #  end
-    #end
+    respond_to do |format|
+      if @enquiry.save
+        #format.html { redirect_to root_path, notice: 'Enquiry was successfully created.' }
+        format.json { render json: root_path, status: :created, location: @enquiry }
+      else
+        format.html { render action: "new", product: parames[:product] }
+        format.json { render json: @enquiry.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /enquiries/1

@@ -1,10 +1,8 @@
 class Enquiry < Messaging
   #callback
+  after_initialize :initialize_dynamic_attributes
+  before_validation :set_dynamic_validation
   after_create :dispatch
-
-  #custom validate
-  validates_presence_of :amount
-  validate :dynamic_field_validation
 
   #field definition
   field :amount, type: Integer
@@ -18,11 +16,21 @@ class Enquiry < Messaging
   has_many :replies, autosave: true
   belongs_to :places, class_name: "Location::Place"
 
-  #accepts_nested_attributes_for :income_info
+  delegate :address,
+           :coordinates,
+           :longitude,
+           :latitude,
+           :state,
+           :region,
+           :place,
+           :to => :customer
 
+  accepts_nested_attributes_for :income_info
 
+  #set validation for default field
   validates :amount, presence: true, numericality: {only_integer: true}
-
+  validates :product, presence: true
+  validates :customer, presence: true
 
   #state machine
   state_machine :status, :initial => :created do
@@ -36,28 +44,22 @@ class Enquiry < Messaging
     end
   end
 
-  #method definition
-  def dynamic_field_validation
-    if product.nil?
-      puts product.name
-      product.enquiry_fields.each do |i|
-        field_value = self[i.name]
-        case i.type
-          when :input
-          when :select
-          when :checkbox
-          when :radiobox
-        end
-        i.validation.each do |v|
-          case v
-            when "required"
-              errors[i.name.to_sym] << i.title + " cannot be blank" if field_value.nil?
-            when :float
-              errors[i.name.to_sym] << i.title + " should be a float" if field_value.float?
-            when :integer
-              errors[i.name.to_sym] << i.title + " should be a integer" if field_value.integer?
-          end
-        end
+  private
+
+  #set validation for dynamic field
+  def set_dynamic_validation
+    unless product.nil?
+      product.enquiry_fields.each do |field|
+        validates_presence_of field.machine_name.to_sym if field.validation.include? "required"
+      end
+    end
+  end
+
+  #initialize dynamic field
+  def initialize_dynamic_attributes
+    unless product.nil?
+      product.enquiry_fields.each do |field|
+        self[field.machine_name.to_sym] ||= nil
       end
     end
   end
@@ -71,32 +73,4 @@ class Enquiry < Messaging
       self.replies.create(:company => partner)
     end
   end
-
-  def method_missing(name, *args)
-    fields_list = product.enquiry_fields.map { |w| w.machine_name }
-    if fields_list.include? (name)
-      self[name] = arg[0]
-    else
-      #super
-    end
-  end
-
-  def state
-    customer.state
-  end
-
-  def region
-    customer.region
-  end
-
-  def place
-    customer.place
-  end
-
-  delegate :address,
-           :coordinates,
-           :longitude,
-           :latitude,
-           :to => :customer
-
 end

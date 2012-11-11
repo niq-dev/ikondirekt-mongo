@@ -6,4 +6,4 @@ table.tDefault cellpadding="0" cellspacing="0" width="100%"
     - @reply.enquiry.product.enquiry_fields.each do |field|
       tr
         td= field.title
-        td= h @reply[field.machine_name.to_sym]
+        td= @reply.enquiry[field.machine_name.to_sym]

@@ -1,8 +1,12 @@
 class Reply < Messaging
-  include Mongoid::DataTable
-  #relationship
+  #callback
+  after_initialize :initialize_dynamic_attributes
+  before_validation :set_dynamic_validation
 
+  #field definition
   field :meeting, type: String
+
+  #relationship
   belongs_to :enquiry
   belongs_to :company
   belongs_to :manager, class_name: "Staff"
@@ -10,6 +14,16 @@ class Reply < Messaging
   embeds_one :customer_profile
 
   accepts_nested_attributes_for :customer_profile
+
+  delegate :product,
+           :address,
+           :coordinates,
+           :longitude,
+           :latitude,
+           :state,
+           :region,
+           :place,
+           :to => :enquiry
 
   def assign_advisor(advisor)
     self.advisor = advisor
@@ -84,6 +98,26 @@ class Reply < Messaging
 
   def place
     enquiry.place
+  end
+
+  private
+
+  #set validation for dynamic field
+  def set_dynamic_validation
+    unless product.nil?
+      product.reply_fields.each do |field|
+        validates_presence_of field.machine_name.to_sym if field.validation.include? "required"
+      end
+    end
+  end
+
+  #initialize dynamic field
+  def initialize_dynamic_attributes
+    unless product.nil?
+      product.reply_fields.each do |field|
+        self[field.machine_name.to_sym] ||= nil
+      end
+    end
   end
 
 end

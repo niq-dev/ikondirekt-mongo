@@ -5,7 +5,7 @@ module DynamicField
     field :machine_name, type: String
     field :title, type: String
     field :type, type: String
-    field :validation, type: Array, default: ["required"]
+    field :validation, type: Array, default: %w(required)
     field :enum, type: Array
     field :suffix, type: String
     field :prefix, type: String
